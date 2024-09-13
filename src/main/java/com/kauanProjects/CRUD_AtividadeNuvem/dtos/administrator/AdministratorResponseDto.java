@@ -1,6 +1,6 @@
-package com.kauanProjects.CRUD_AtividadeNuvem.dtos.admnistrator;
+package com.kauanProjects.CRUD_AtividadeNuvem.dtos.administrator;
 
-import com.kauanProjects.CRUD_AtividadeNuvem.entities.admnistrator.AdministratorEntity;
+import com.kauanProjects.CRUD_AtividadeNuvem.entities.administrator.AdministratorEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

@@ -1,7 +1,7 @@
-package com.kauanProjects.CRUD_AtividadeNuvem.config.controllers.administrator;
+package com.kauanProjects.CRUD_AtividadeNuvem.controllers.administrator;
 
-import com.kauanProjects.CRUD_AtividadeNuvem.dtos.admnistrator.AdministratorDto;
-import com.kauanProjects.CRUD_AtividadeNuvem.dtos.admnistrator.AdministratorResponseDto;
+import com.kauanProjects.CRUD_AtividadeNuvem.dtos.administrator.AdministratorDto;
+import com.kauanProjects.CRUD_AtividadeNuvem.dtos.administrator.AdministratorResponseDto;
 import com.kauanProjects.CRUD_AtividadeNuvem.services.administrator.AdministratorService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
