@@ -1,4 +1,4 @@
-package com.kauanProjects.CRUD_AtividadeNuvem.dtos.admnistrator;
+package com.kauanProjects.CRUD_AtividadeNuvem.dtos.administrator;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

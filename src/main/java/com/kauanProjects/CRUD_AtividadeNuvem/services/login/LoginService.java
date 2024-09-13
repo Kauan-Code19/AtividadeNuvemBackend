@@ -1,31 +1,32 @@
-package com.kauanProjects.CRUD_AtividadeNuvem.services.administrator;
+package com.kauanProjects.CRUD_AtividadeNuvem.services.login;
 
 import com.kauanProjects.CRUD_AtividadeNuvem.dtos.administrator.AdministratorDto;
 import com.kauanProjects.CRUD_AtividadeNuvem.dtos.administrator.AdministratorResponseDto;
 import com.kauanProjects.CRUD_AtividadeNuvem.entities.administrator.AdministratorEntity;
 import com.kauanProjects.CRUD_AtividadeNuvem.repositories.administrator.AdministratorRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class AdministratorService {
+public class LoginService {
 
     private final AdministratorRepository administratorRepository;
 
     @Autowired
-    public AdministratorService(AdministratorRepository administratorRepository) {
+    public LoginService(AdministratorRepository administratorRepository) {
         this.administratorRepository = administratorRepository;
     }
 
-    @Transactional
-    public AdministratorResponseDto createAdministrator(AdministratorDto administratorDto) {
-        AdministratorEntity administrator = new AdministratorEntity();
+    @Transactional(readOnly = true)
+    public AdministratorResponseDto login(AdministratorDto administratorDto) {
+        AdministratorEntity administrator = administratorRepository.findByEmail(administratorDto.getEmail())
+                .orElseThrow(() -> new EntityNotFoundException("Administrator não encontrado"));
 
-        administrator.setEmail(administratorDto.getEmail());
-        administrator.setPassword(administratorDto.getPassword());
-
-        administratorRepository.save(administrator);
+        if (!administrator.getPassword().equals(administratorDto.getPassword())) {
+            throw new IllegalArgumentException("Senha Incorreta");
+        }
 
         return new AdministratorResponseDto(administrator);
     }

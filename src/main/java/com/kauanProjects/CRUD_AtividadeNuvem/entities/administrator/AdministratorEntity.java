@@ -1,4 +1,4 @@
-package com.kauanProjects.CRUD_AtividadeNuvem.entities.admnistrator;
+package com.kauanProjects.CRUD_AtividadeNuvem.entities.administrator;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
