@@ -1,6 +1,8 @@
 package com.kauanProjects.CRUD_AtividadeNuvem.services.products.clothe;
 
+import com.kauanProjects.CRUD_AtividadeNuvem.dtos.products.clothe.ClotheDto;
 import com.kauanProjects.CRUD_AtividadeNuvem.dtos.products.clothe.ClotheResponseDto;
+import com.kauanProjects.CRUD_AtividadeNuvem.entities.products.clothe.ClotheEntity;
 import com.kauanProjects.CRUD_AtividadeNuvem.repositories.product.clothe.ClotheRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +28,20 @@ public class ClotheService {
         }
 
         return clotheResponseDtos;
+    }
+
+    public ClotheResponseDto updateClothe(Long clotheId, ClotheDto clotheDto) {
+        ClotheEntity clothe = clotheRepository.getReferenceById(clotheId);
+
+        clothe.setName(clotheDto.getName());
+        clothe.setDescription(clotheDto.getDescription());
+        clothe.setSize(clotheDto.getSize());
+        clothe.setColor(clotheDto.getColor());
+        clothe.setMaterial(clotheDto.getMaterial());
+        clothe.setPrice(clotheDto.getPrice());
+
+        clotheRepository.save(clothe);
+
+        return new ClotheResponseDto(clothe);
     }
 }
