@@ -6,6 +6,7 @@ import com.kauanProjects.CRUD_AtividadeNuvem.services.products.clothe.ClotheServ
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -38,5 +39,12 @@ public class ClotheController {
         ClotheResponseDto clotheResponseDto = clotheService.updateClothe(clotheId, clotheDto);
 
         return ResponseEntity.ok(clotheResponseDto);
+    }
+
+    @DeleteMapping("/{clotheId}")
+    public ResponseEntity<Void> deleteClothe(@PathVariable Long clotheId) {
+        clotheService.deleteClothe(clotheId);
+
+        return ResponseEntity.noContent().build();
     }
 }

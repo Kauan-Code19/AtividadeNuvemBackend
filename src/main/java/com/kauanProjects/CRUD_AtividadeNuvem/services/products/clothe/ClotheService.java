@@ -44,4 +44,8 @@ public class ClotheService {
 
         return new ClotheResponseDto(clothe);
     }
+
+    public void deleteClothe(Long clotheId) {
+        clotheRepository.deleteById(clotheId);
+    }
 }
